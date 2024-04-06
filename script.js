@@ -167,10 +167,10 @@ $(document).ready(function () {
     )
       .then(() => {
         // Now you can use the userService object
-        console.log("User data:");
+        console.log("User data:", userService);
 
         userService
-          .fetchUserData(userId)
+          .getUsersData()
           .then((userData) => {
             console.log("User data:", userData);
           })

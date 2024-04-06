@@ -1,6 +1,7 @@
 export const userService = {
+  // Placeholder code to call the API to fetch user data
+
   getUsersData: async () => {
-    // Placeholder code to call the API to fetch user data
     const url = `https://18.189.14.69/api/v1/users/`;
     // Example fetch call
     const response = await fetch(url);
