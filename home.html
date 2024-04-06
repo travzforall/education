@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas LMS Page</title>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Load Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/base.min.css"
+      rel="stylesheet"
+    />
+    <!-- Load your script file -->
+  </head>
+  <body>
+    <div class="user-info"></div>
+    <div class="assignment-list"></div>
+    <div class="admin-menu bg-blue-100 flex justify-center gap-5 p-4">
+      <a
+        href="https://18.189.14.69/courses/1/pages/home"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Home
+      </a>
+
+      <a
+        href="https://18.189.14.69/courses/1/pages/resources"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Role Resources
+      </a>
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        To Do
+      </a>
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Keywords
+      </a>
+    </div>
+
+    <div class="student-menu bg-blue-100 flex justify-center gap-5 p-4">
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Home
+      </a>
+
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Resources
+      </a>
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        To Do
+      </a>
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full underline-none"
+      >
+        Keywords
+      </a>
+    </div>
+
+    <div class="window mt-5">
+      <table class="w-full border-collapse border border-gray-800">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border border-gray-800 px-4 py-2"></th>
+            <th class="border border-gray-800 px-4 py-2">ID</th>
+            <th class="border border-gray-800 px-4 py-2">Code</th>
+            <th class="border border-gray-800 px-4 py-2">Parent</th>
+            <th class="border border-gray-800 px-4 py-2">Order</th>
+            <th class="border border-gray-800 px-4 py-2">Percentage</th>
+            <th class="border border-gray-800 px-4 py-2">Slides</th>
+            <th class="border border-gray-800 px-4 py-2">Notes</th>
+            <th class="border border-gray-800 px-4 py-2">Questions</th>
+            <th class="border border-gray-800 px-4 py-2">Videos</th>
+            <th class="border border-gray-800 px-4 py-2">Title</th>
+          </tr>
+        </thead>
+        <tbody id="place"></tbody>
+      </table>
+    </div>
+
+    <!-- This div will hold the Canvas LMS content -->
+    <div id="canvasContent"></div>
+    <script type="module src="./script.js"></script>
+    <script type="module" src="service.js"></script>
+  </body>
+</html>
