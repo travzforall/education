@@ -1,15 +1,3 @@
-const { userService } = require("./service");
-
-// Now you can use the userService object
-userService
-  .fetchUserData(userId)
-  .then((userData) => {
-    console.log("User data:", userData);
-  })
-  .catch((error) => {
-    console.error("Error fetching user data:", error);
-  });
-
 function applyTailwindStyles(user, assignments) {
   // Apply Tailwind CSS classes to elements on the page
   // Example: Adding Tailwind CSS classes to elements
@@ -42,15 +30,15 @@ function createTableRow(item) {
   return `
     <tr class="hover:bg-red-200 cursor-pointer text-center">
     <td><a class="hover:bg-gray-600 "> <div class="form-control">
-    <label class="cursor-pointer label">
+    <label class="cursor-pointer label"> 
       <input type="checkbox" checked="checked" class="checkbox checkbox-primary">
     </label>
   </div></a></td>
     <td>${item.id}</td>
-    <td>${item.key}</td>
-    <td>${item.parent}</td>
-    <td>${item.position}</td>
-      <td>${item.percentage}</td>
+    <td>${item.key}</td>  
+    <td>${item.parent}</td>  
+    <td>${item.position}</td>  
+      <td>${item.percentage}</td> 
       <td> 1 </td>
       <td> 0 </td>
       <td> 3 </td>
@@ -69,7 +57,7 @@ class DatabaseField {
   }
 }
 
-keyword = [];
+const keyword = [];
 
 async function fetchDatabaseFields() {
   const url =
@@ -174,12 +162,34 @@ $(document).ready(function () {
   // This function will be executed when the DOM is fully loaded
   console.log("Hello, Canvas LMS!");
   if (true) {
+    loadScript(
+      "https://cdn.jsdelivr.net/gh/travzforall/education@main/service.js"
+    )
+      .then(() => {
+        // Now you can use the userService object
+        console.log("User data:");
+
+        userService
+          .fetchUserData(userId)
+          .then((userData) => {
+            console.log("User data:", userData);
+          })
+          .catch((error) => {
+            console.error("Error fetching user data:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error loading script:", error);
+      });
     // if (window.location.pathname.includes("/courses/")) {
     // Load necessary resources and manipulate the page
     loadTailwindCSS(); // Load Tailwind CSS
     setTimeout(function () {
       applyTailwindStyles(user, assignments); // Apply Tailwind styles
     }, 500); // Delay for 5 seconds
+
+    // Load the service.js file from the CDN
+
     // const user = getUserInformation();
     // console.log("User:", user);
     // const assignments = getAssignments();
@@ -237,6 +247,18 @@ function getAssignments() {
   ];
 }
 
+// Function to dynamically load a script
+function loadScript(url) {
+  console;
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = url;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
 function setBearerToken() {
   let token = ""; // Assuming the token is stored in localStorage under the key 'userToken'
   token = "kDyPawWLpOKa4G8MEI7t5Q08gLJUGjXT";
@@ -253,80 +275,3 @@ function setBearerToken() {
     console.error("User token not found in local storage.");
   }
 }
-
-const MVCController = (() => {
-  const fetchDataFromServer = async () => {
-    try {
-      const response = await fetch("https://example.com/data");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data from server");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      return null;
-    }
-  };
-
-  // Public methods exposed by the controller
-  return {
-    // Example function to get data from server and perform operations
-    getDataAndPerformOperations: async () => {
-      const data = await fetchDataFromServer();
-      if (data) {
-        // Perform operations with the data
-        // For example:
-        console.log("Data fetched from server:", data);
-        // You can call model or view methods from here as needed
-      } else {
-        console.log("Failed to fetch data from server");
-      }
-    },
-  };
-})();
-
-const MVCModel = (() => {
-  // Private variables and functions
-
-  // Example function to process data
-  const processData = (data) => {
-    // Process the data as needed
-    // For example, you can filter, transform, or organize the data
-    return data;
-  };
-
-  // Public methods exposed by the model
-  return {
-    // Example function to process data
-    processAndReturnData: (data) => {
-      return processData(data);
-    },
-  };
-})();
-
-const MVCView = (() => {
-  // Private variables and functions
-
-  // Example function to render data
-  const renderData = (processedData) => {
-    // Render the processed data to the UI
-    // For example, update HTML elements with the data
-    console.log("Rendering data:", processedData);
-  };
-
-  // Public methods exposed by the view
-  return {
-    // Example function to render data
-    renderProcessedData: (processedData) => {
-      renderData(processedData);
-    },
-  };
-})();
-
-// Example usage:
-MVCController.getDataAndPerformOperations().then(() => {
-  const data = {}; // Assume data fetched from server
-  const processedData = MVCModel.processAndReturnData(data);
-  MVCView.renderProcessedData(processedData);
-});

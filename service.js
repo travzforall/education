@@ -1,4 +1,16 @@
-const userService = {
+export const userService = {
+  getUsersData: async () => {
+    // Placeholder code to call the API to fetch user data
+    const url = `https://18.189.14.69/api/v1/users/`;
+    // Example fetch call
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to fetch user data");
+    }
+    const userData = await response.json();
+    return userData;
+  },
+
   // Method to fetch user data from the server
   fetchUserData: async (userId) => {
     // Placeholder code to call the API to fetch user data
@@ -66,9 +78,4 @@ const userService = {
     }
     // No need to return anything as user is deleted
   },
-};
-
-// Export the userService
-module.exports = {
-  userService,
 };
